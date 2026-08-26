@@ -29,6 +29,8 @@ jobs:
       - uses: actions/configure-pages@v4
       - run: npm ci
       - run: npm run build
+      - name: Publish MCP resources
+        run: cp docs/reference/kyozai-json.md docs/reference/platform-api.md docs/.vitepress/dist/reference/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: docs/.vitepress/dist
