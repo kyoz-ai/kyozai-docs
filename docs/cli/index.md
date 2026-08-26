@@ -97,6 +97,13 @@ kyozai production deploy <release-id>
 kyozai course invite --role learner
 ```
 
+Instructorは一覧からMembership IDを確認してCourse memberのRoleを削除できます。自分のInstructor Roleと、Courseに残る最後のInstructor Roleは削除できません。Instructorが自分のLearner Roleを削除することはできます。
+
+```sh
+kyozai course members
+kyozai course remove <membership-id> --role learner
+```
+
 最初のProductionだけは、Stagingがない状態でもReleaseを配置できます。
 
 ## Source archiveへ含めないfile
