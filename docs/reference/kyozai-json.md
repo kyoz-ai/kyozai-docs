@@ -61,7 +61,7 @@ browser codeからの利用方法は[Platform API](/reference/platform-api)を�
 
 `migrations`は適用順にSQL fileを並べます。`tables`にはAPIから利用するtableとscopeを定義します。
 
-- `membership`: 受講者ごとの行。受講者は専用APIで自身の行をupsert・deleteできる
+- `membership`: Membershipごとの行。Course memberは専用APIで自身の行をupsert・deleteできる
 - `course`: Course全体のtable。教員がSQL APIから利用する
 
 `membership` scopeでは、Application内で行を識別するcolumnを`key`へ指定します。migration側のtableには`membership_id` columnを設け、`membership_id`と`key`を一意にします。

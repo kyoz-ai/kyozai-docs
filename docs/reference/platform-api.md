@@ -85,9 +85,9 @@ DELETE /_kyozai/capabilities/course/learners/<membership-id>/personal/objects/<k
 
 `kyozai.json`の`capabilities`へ`application-database`を指定し、migrationとtable scopeを定義します。
 
-### 受講者のMembership scope
+### 自身のMembership scope
 
-受講者は`membership` scopeのtableで自身の行をupsertまたはdeleteできます。
+Course memberはRoleにかかわらず、`membership` scopeのtableで自身の行をupsertまたはdeleteできます。
 
 ```http
 PUT    /_kyozai/capabilities/database/membership/<table>
@@ -129,7 +129,7 @@ Content-Type: application/json
 }
 ```
 
-SELECTのresponseは`results`に行を返します。SQL実行はauditへ記録されます。受講者はSQL APIを利用できません。
+SELECTのresponseは`results`に行を返します。SQL実行はauditへ記録されます。Teaching AssistantまたはInstructor Roleを持たないCourse memberはSQL APIを利用できません。
 
 受講者がPersonal Objectを保存するApplicationで教員向けの一覧・集計も必要な場合は、保存時に検索・集計用の状態をMembership scopeのtableへupsertします。教員画面はそのtableをSQLでqueryするため、Object本体をすべて取得して再集計せずに済みます。
 
