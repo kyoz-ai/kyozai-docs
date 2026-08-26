@@ -24,7 +24,7 @@ https://mcp.kyoz.ai/mcp
 
 Applicationの作成、build、Stagingへの配置にはwrite actionを使うため、ChatGPT BusinessまたはEnterprise/EduのWeb版が必要です。
 
-ChatGPTのSettingsでDeveloper modeを有効にし、Appsの作成画面へMCP endpointを登録します。認証方式にOAuthを選んでtoolをscanするとkyoz.aiの認証画面が開きます。Passkeyでログインし、Application、Staging、Productionへのアクセスを承認してください。
+ChatGPTのSettingsでDeveloper modeを有効にし、Appsの作成画面へMCP endpointを登録します。認証方式にOAuthを選んでtoolとApplication開発Skillをscanするとkyoz.aiの認証画面が開きます。Passkeyでログインし、Application、Staging、Productionへのアクセスを承認してください。
 
 詳しい画面操作と提供条件は[ChatGPTのDeveloper modeとMCP apps](https://help.openai.com/en/articles/12584461-developer-mode-and-mcp-apps-in-chatgpt)を確認してください。
 
