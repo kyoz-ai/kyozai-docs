@@ -2,6 +2,10 @@
 
 kyoz.aiは、教員とCoding Agentが作ったWeb教材を受講者へ公開するホスティング環境です。認証と永続的storageを教員・受講者modelに基づく単純でカスタマイズできないAPIとして提供し、Vibe Codingで教材を作り替えてもCourse dataと権限境界が破綻しにくいようにします。
 
+[ダッシュボード](https://my.kyoz.ai)
+
+現在、ログイン方式はPasskeyのみです。
+
 ## 開発方法
 
 ### [CLIで開発する](/cli/)
