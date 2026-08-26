@@ -24,7 +24,7 @@ https://mcp.kyoz.ai/mcp
 
 Applicationの作成、build、Stagingへの配置にはwrite actionを使うため、ChatGPT BusinessまたはEnterprise/EduのWeb版が必要です。
 
-ChatGPTのSettingsでDeveloper modeを有効にし、Appsの作成画面へMCP endpointを登録します。認証方式にOAuthを選んでtoolをscanするとkyoz.aiの認証画面が開きます。Passkeyでログインし、ApplicationとStagingへのアクセスを承認してください。
+ChatGPTのSettingsでDeveloper modeを有効にし、Appsの作成画面へMCP endpointを登録します。認証方式にOAuthを選んでtoolをscanするとkyoz.aiの認証画面が開きます。Passkeyでログインし、Application、Staging、Productionへのアクセスを承認してください。
 
 詳しい画面操作と提供条件は[ChatGPTのDeveloper modeとMCP apps](https://help.openai.com/en/articles/12584461-developer-mode-and-mcp-apps-in-chatgpt)を確認してください。
 
@@ -32,7 +32,7 @@ ChatGPTのSettingsでDeveloper modeを有効にし、Appsの作成画面へMCP e
 
 個人で利用する場合は、`Customize` → `Connectors` → `Add custom connector`を開き、MCP endpointを登録します。TeamとEnterpriseでは、Ownerが先に`Organization settings` → `Connectors`へ登録します。
 
-追加したconnectorで`Connect`を押すとkyoz.aiの認証画面が開きます。Passkeyでログインし、ApplicationとStagingへのアクセスを承認してください。詳しい画面操作は[Claudeのcustom connector guide](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp)を確認してください。
+追加したconnectorで`Connect`を押すとkyoz.aiの認証画面が開きます。Passkeyでログインし、Application、Staging、Productionへのアクセスを承認してください。詳しい画面操作は[Claudeのcustom connector guide](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp)を確認してください。
 
 ## Applicationを作成・更新する
 
@@ -57,4 +57,4 @@ Coding Agentのbrowser sessionとは別に、人間が直接開く受講者用�
 
 ## 授業へ反映する
 
-kyoz.ai MCPが提供するtoolはProductionを変更しません。確認後、[kyoz.ai Console](https://my.kyoz.ai)で対象Applicationを開き、Staging環境の管理から「授業に反映」を実行します。[CLI](/cli/)から反映することもできます。
+Stagingで確認したReleaseを授業へ反映するようCoding Agentへ指示します。対象CourseのInstructorがMCPを利用している場合だけProductionへ反映でき、反映状態も同じ会話で確認できます。
