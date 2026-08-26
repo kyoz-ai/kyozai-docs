@@ -12,6 +12,10 @@ kyoz.aiは、教員とCoding Agentが作ったWeb教材を受講者へ公開す�
 
 ChatGPTなどのWeb UIから、GitHub上の教材をbuildしてStagingへ配置し、Browser Runで画面、console error、失敗したnetwork requestを確認できます。
 
+## Examples
+
+[kyoz.ai examples](https://github.com/kyoz-ai/kyozai-examples)
+
 ## Reference
 
 - [kyozai.json](/reference/kyozai-json): build成果物とPlatformの界面
