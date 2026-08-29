@@ -62,11 +62,12 @@ Objectは`(Environment, Membership, Key)`で識別されます。ApplicationはK
 interface PersonalObjectInfo {
   key: string;
   size: number;
+  contentType: string | null;
   uploaded: string;
 }
 ```
 
-`PUT`には任意のbodyを送れます。取得時は保存した`Content-Type`と`Content-Disposition: attachment`を持つbodyを返します。保存と削除の成功responseは`204`です。
+`PUT`には任意のbodyを送れます。取得時は保存した`Content-Type`、保存日時の`Last-Modified`、`Content-Disposition: attachment`を持つbodyを返します。保存と削除の成功responseは`204`です。
 
 ### Course内の受講者のObject
 
