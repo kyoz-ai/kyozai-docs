@@ -23,4 +23,5 @@ ChatGPTなどのWeb UIから、GitHub上の教材をbuildしてStagingへ配置�
 ## Reference
 
 - [kyozai.json](/reference/kyozai-json): build成果物とPlatformの界面
+- [JupyterLite builder](/reference/jupyterlite-builder): NotebookからJupyterLite Applicationを作るbuilder
 - [Platform API](/reference/platform-api): Applicationのbrowser codeから利用するAPI
