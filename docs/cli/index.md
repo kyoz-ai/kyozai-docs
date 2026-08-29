@@ -39,7 +39,7 @@ Application IDとInstance IDは`.kyozai.json`へ保存されます。このfile�
 
 ## 実装してStagingで確認する
 
-Applicationのtestとbuildは`package.json`で定義します。
+Applicationのtestとbuildは`package.json`で定義します。`kyozai.json`の[`build.kind`](/reference/kyozai-json#build)でkyoz.aiのbuilderを使うApplicationは、hosted buildでReleaseを作ります。
 
 ```sh
 npm install

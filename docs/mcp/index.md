@@ -10,6 +10,8 @@ hosted buildの対象はpublic GitHub repositoryです。Application rootには�
 - `test`と`build`を定義した`package.json`
 - `npm ci`でdependencyを復元できるlockfile
 
+`kyozai.json`で[`build.kind`](/reference/kyozai-json#build)に`jupyterlite`を指定した場合は、`package.json`とlockfileの代わりにNotebookを置いたcontents directoryが必要です。
+
 kyoz.aiはrepository、40文字のcommit SHA、repository内のApplication rootを指定してbuildします。Coding Agentにsourceの編集・commitも任せる場合は、GitHubを操作できるconnectorを同じ会話で有効にします。既にあるcommitをbuildするだけなら、GitHub connectorは必要ありません。
 
 kyoz.ai MCP endpoint:
