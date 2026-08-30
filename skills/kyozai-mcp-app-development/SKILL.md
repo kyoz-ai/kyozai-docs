@@ -5,7 +5,7 @@ description: GitHub上のkyoz.ai Applicationを変更し、hosted buildとStagin
 
 # kyoz.ai ApplicationをMCPで開発する
 
-Application sourceを変更する前に、supporting resourcesの`references/kyozai-json.md`と`references/platform-api.md`を読む。確認できない仕様を推測で補わない。
+Application sourceを変更する前に、supporting resourcesの`references/kyozai-json.md`、`references/jupyterlite-builder.md`、`references/platform-api.md`を読む。確認できない仕様を推測で補わない。
 
 sourceの編集とcommitにはGitHubを操作できるtoolを使う。kyoz.ai MCPはGitHub repositoryを編集しない。hosted buildにはpublic repository、40文字のcommit SHA、Application rootを指定する。
 
