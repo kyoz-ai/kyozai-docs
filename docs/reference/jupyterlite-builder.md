@@ -2,6 +2,8 @@
 
 `kyozai.json`の`build.kind`に`jupyterlite`を指定すると、Notebookを置いたdirectoryからJupyterLite Applicationを作ります。JupyterLite buildはhosted buildで実行します。
 
+例: [kyozai-examples/jupyterlite](https://github.com/kyoz-ai/kyozai-examples/tree/main/jupyterlite) [![Deploy on kyoz.ai](https://img.shields.io/badge/Deploy%20on-kyoz.ai-172554)](https://my.kyoz.ai/deploy?repo=kyoz-ai/kyozai-examples&ref=main&path=jupyterlite)
+
 ```json
 {
   "build": {

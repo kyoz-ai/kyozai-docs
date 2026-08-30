@@ -27,6 +27,7 @@ export default defineConfig({
           text: 'Reference',
           items: [
             { text: 'kyozai.json', link: '/reference/kyozai-json' },
+            { text: 'JupyterLite builder', link: '/reference/jupyterlite-builder' },
             { text: 'Platform API', link: '/reference/platform-api' },
           ],
         },
