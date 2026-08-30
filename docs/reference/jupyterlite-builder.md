@@ -36,7 +36,7 @@ hookと`static`に置いた教員用画面は、いずれも[Platform API](/refe
 
 ## Hooks
 
-`hooks`のmoduleは`saved`と`removed`をexportできます。driveはNotebookの保存・複製・checkpoint復元で`saved`を、削除で`removed`を呼びます。名前変更では元のpathで`removed`、新しいpathで`saved`を呼びます。
+`hooks`のmoduleは`saved`、`removed`、`executed`をexportできます。driveはNotebookの保存・複製・checkpoint復元で`saved`を、削除で`removed`を呼びます。名前変更では元のpathで`removed`、新しいpathで`saved`を呼びます。cellの実行が終わるたびに、成否にかかわらず`executed`を呼びます。
 
 ```js
 const TABLE_URL = '/_kyozai/capabilities/database/membership/notebook_progress';
@@ -74,7 +74,9 @@ async function record(method, body) {
 
 hookは受講者のbrowserで、その受講者の権限で実行されます。Personal ObjectsとApplication Databaseへの書き込みは、いずれもその受講者自身のscopeに限られます。
 
-hookはPersonal Objectsへの保存・削除が完了した後に呼ばれます。hookが例外を投げるとJupyterLiteには保存の失敗として表示されますが、Personal Objectsの内容は既に更新されています。同じ`model`で再度呼ばれても結果が変わらないように、Membership scopeのupsertとdeleteのような冪等な操作で記録します。
+`saved`と`removed`はPersonal Objectsへの保存・削除が完了した後に呼ばれます。hookが例外を投げるとJupyterLiteには保存の失敗として表示されますが、Personal Objectsの内容は既に更新されています。同じ`model`で再度呼ばれても結果が変わらないように、Membership scopeのupsertとdeleteのような冪等な操作で記録します。
+
+`executed(model, execution)`の`model`は`saved`と同じ形で、`content`には実行直後のNotebookの内容が入ります。この内容は保存されておらず、`last_modified`は最後に保存した時刻のままです。`execution.cell`は実行したcellのnbformat JSONで、`id`、`source`、`execution_count`、`outputs`を持ちます。errorは`outputs`の`output_type: "error"`(`ename`、`evalue`、`traceback`)として入ります。`execution.success`は実行が成功したかどうかです。実行時刻は渡さないので、必要ならhookで取得します。`executed`が例外を投げてもcellの実行は失敗にならず、browserのconsoleにerrorとして残ります。
 
 ## 初期contentsの一覧
 
