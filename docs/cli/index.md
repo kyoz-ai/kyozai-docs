@@ -100,6 +100,8 @@ kyozai course invite --role instructor --expires-at 2026-09-30T18:00:00+09:00
 
 `--max-participants` は、そのURLから参加する累計人数の上限です。期限はありません。`--expires-at` はタイムゾーンを含む将来の日時を指定し、期限内の人数制限はありません。両方を同時には指定できません。どちらも省略すると、従来どおり1回限り・7日間の招待になります。
 
+招待URLは対象アプリケーションのURLで発行されます。アプリケーションで未ログインの場合はPasskey認証後に参加し、そのままアプリケーションを利用できます。以前のauth.kyoz.aiの招待URLも引き続き利用できます。
+
 URLは発行時にコピーして保管してください。後から同じURLを再表示できません。管理画面の「授業の実施 → 招待URL」で、参加人数・終了条件の確認と無効化ができます。無効化しても参加済みのメンバーには影響しません。
 
 Instructorは一覧からMembership IDを確認してCourse memberのRoleを削除できます。自分のInstructor Roleと、Courseに残る最後のInstructor Roleは削除できません。Instructorが自分のLearner Roleを削除することはできます。
