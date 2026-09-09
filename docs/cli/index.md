@@ -6,7 +6,7 @@
 
 [kyozai-cli Releases](https://github.com/kyoz-ai/kyozai-cli/releases/latest)からOSとarchitectureに合うarchiveを取得します。`kyozai`を展開し、checksumを確認してPATH上へ置いてください。
 
-現在のReleaseはmacOS、Linux、Windowsのamd64とarm64を提供しています。
+現在のReleaseはmacOS、Linux、Windowsのamd64とarm64を提供しています。招待の`--max-participants`と`--expires-at`を使う場合は、v2026.9.0以降を利用してください。
 
 ## ログインする
 

@@ -36,6 +36,18 @@ ChatGPTのSettingsでDeveloper modeを有効にし、Appsの作成画面へMCP e
 
 追加したconnectorで`Connect`を押すとkyoz.aiの認証画面が開きます。Passkeyでログインし、Application、Staging、Productionへのアクセスを承認してください。詳しい画面操作は[Claudeのcustom connector guide](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp)を確認してください。
 
+### Codex
+
+Codexに`kyozai`としてMCP endpointを登録している場合は、次のコマンドで招待発行を含む権限を認可できます。
+
+```sh
+codex mcp login kyozai --scopes application:write,staging:write,production:write,course:write
+```
+
+ブラウザで対象CourseのInstructorとしてPasskey認証し、権限を許可します。接続名が異なる場合は`kyozai`をその名前に置き換えてください。認可後も新しいツールが表示されない場合はCodexを再起動して会話を再開し、`course_invitation_create`が利用できるか確認します。[CodexのMCP設定](https://developers.openai.com/codex/mcp/)も参照してください。
+
+接続に使ったアカウントによって利用できるApplicationは異なります。招待を発行する前に、対象ApplicationとInstanceを確認してください。
+
 ## Applicationを作成・更新する
 
 初めて教材を配置するときは、Coding Agentがkyoz.ai上にApplicationを作成し、指定したcommitをbuildして最初のStagingへ配置します。既存のApplicationを更新するときは、対象Applicationを選び、新しいcommitをbuildして同じStagingを更新します。
@@ -60,3 +72,30 @@ Coding Agentのbrowser sessionとは別に、人間が直接開く受講者用�
 ## 授業へ反映する
 
 Stagingで確認したReleaseを授業へ反映するようCoding Agentへ指示します。対象CourseのInstructorがMCPを利用している場合だけProductionへ反映でき、反映状態も同じ会話で確認できます。
+
+## 招待URLを発行する
+
+対象CourseのInstructorは、`course_invitation_create`で受講者または教員の招待URLを発行できます。MCP接続で`course:write`（Courseの招待URL発行）へのアクセスを承認してください。以前からの接続でこの権限がない場合は、ツール情報を更新し、追加の権限を認可して接続し直します。
+
+例えば「simple-quizに受講者用の招待URLを、累計30人まで参加できる条件で発行してください」と依頼できます。Coding Agentは`application_list`で対象を確認し、そのApplication Instance IDを使います。
+
+```json
+{
+  "applicationInstanceId": "adbdvf1rgx",
+  "role": "learner",
+  "maxParticipants": 30
+}
+```
+
+教員を招待する場合は、`role`を`instructor`にします。例えば「同じApplicationに教員用・累計2人までの招待URLを発行してください」と依頼できます。
+
+`role`は`learner`または`instructor`です。終了条件は次の一方を指定します。
+
+- `maxParticipants`：参加する累計人数の上限（正の整数）。期限はありません。
+- `expiresAt`：タイムゾーン付きの将来日時（例：`2026-09-30T18:00:00+09:00`）。人数制限はありません。
+
+両方の同時指定はできません。両方省略すると、CLIと同じ1人・7日間の招待になります。
+
+結果には招待ID、Course名、Role、招待URL、期限、人数上限が返ります。URLは発行時にだけ返されるため、その場で保存してください。同じ発行操作を繰り返すと別の招待が作られます。
+
+招待URLは対象Applicationの`/_kyozai/join?code=...`です。参加者はPasskeyでログインして参加を確定し、そのsessionでApplicationを利用できます。URLを開くだけでは参加人数に含まれません。参加人数・状態の確認と無効化は管理画面の「授業の実施 → 招待URL」で行います。
